@@ -28,6 +28,22 @@ docker-compose exec app bash
 composer create-project laravel/laravel .
 ```
 
+### インストール後の設定
+
+config/app.phpにて、以下２つを修正
+```
+'timezone' => 'Asia/Tokyo',
+'locale' => 'ja',
+```
+
+```
+# デバックバーのインストール
+composer require barryvdh/laravel-debugbar
+
+# .envにて、On/Offを切り替え
+APP_DEBUG=true
+```
+
 ## その他コマンド
 
 ```
