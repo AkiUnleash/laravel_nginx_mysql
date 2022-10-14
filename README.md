@@ -50,13 +50,11 @@ APP_DEBUG=true
 ## langフォルダにjaディレクトリを作成
 ## 以下４つのファイルを作成する。
 ## 公式ページを参照 https://readouble.com/laravel/9.x/ja
+
 - auth.php
 - pagination.php
 - password.php
 - validation.php
-
-
-
 ```
 
 ## その他コマンド
