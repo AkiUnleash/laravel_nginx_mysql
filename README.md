@@ -44,6 +44,12 @@ composer require barryvdh/laravel-debugbar
 APP_DEBUG=true
 ```
 
+```
+# キャッシュの削除方法
+php artisan cache:clear
+php artisan config:clear
+```
+
 ## その他コマンド
 
 ```
