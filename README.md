@@ -30,8 +30,8 @@ composer create-project laravel/laravel .
 
 ### インストール後の設定
 
-config/app.phpにて、以下２つを修正
 ```
+# config/app.phpにて、以下２つを修正
 'timezone' => 'Asia/Tokyo',
 'locale' => 'ja',
 ```
@@ -44,10 +44,19 @@ composer require barryvdh/laravel-debugbar
 APP_DEBUG=true
 ```
 
+
 ```
-# キャッシュの削除方法
-php artisan cache:clear
-php artisan config:clear
+# 言語の設定
+## langフォルダにjaディレクトリを作成
+## 以下４つのファイルを作成する。
+## 公式ページを参照 https://readouble.com/laravel/9.x/ja
+- auth.php
+- pagination.php
+- password.php
+- validation.php
+
+
+
 ```
 
 ## その他コマンド
@@ -55,7 +64,15 @@ php artisan config:clear
 ```
 # DBログインに入る
 docker-compose exec db bash
+
 ```
+
+```
+# キャッシュの削除方法
+php artisan cache:clear
+php artisan config:clear
+```
+
 
 ## 参考サイト
 
