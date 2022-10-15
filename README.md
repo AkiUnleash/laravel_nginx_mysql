@@ -69,6 +69,11 @@ DB_USERNAME=user
 DB_PASSWORD=password
 ```
 
+#### Jetstreamの隠しViewフォルダの表示
+```
+php artisan vendor:publish --tag=jetstream-views
+```
+
 ## JetStreamのインストール
 
 https://readouble.com/jetstream/1.0/ja/installation.html
