@@ -69,15 +69,20 @@ DB_USERNAME=user
 DB_PASSWORD=password
 ```
 
-#### Jetstreamの隠しViewフォルダの表示
+
+#### Errorページの取得
 ```
-php artisan vendor:publish --tag=jetstream-views
+php artisan vendor:publish --tag=laravel-errors
 ```
 
 ## JetStreamのインストール
 
 https://readouble.com/jetstream/1.0/ja/installation.html
 
+### Jetstreamの隠しViewフォルダの表示
+```
+php artisan vendor:publish --tag=jetstream-views
+```
 
 
 ## その他コマンド
