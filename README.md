@@ -75,6 +75,11 @@ DB_PASSWORD=password
 php artisan vendor:publish --tag=laravel-errors
 ```
 
+#### paginationの表示
+```
+php artisan vendor:publish --tag=laravel-pagination
+```
+
 ## JetStreamのインストール
 
 https://readouble.com/jetstream/1.0/ja/installation.html
