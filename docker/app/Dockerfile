@@ -23,12 +23,7 @@ COPY ./src /app
 
 WORKDIR /app
 
-RUN chmod -R 777 storage \
-  && php artisan optimize:clear \
-  && php artisan optimize \
-  && php artisan cache:clear \
-  && php artisan config:clear \
-  && php artisan route:clear \
-  && php artisan view:clear \
+RUN composer install \
+  && chmod -R 777 storage \
   && npm install \
   && npm run build
