@@ -23,7 +23,7 @@ COPY ./src /app
 
 WORKDIR /app
 
-RUN composer install \
+RUN composer install -q -n --no-ansi --no-dev --no-scripts --no-progress --prefer-dist \
   && chmod -R 777 storage \
   && npm install \
   && npm run build
