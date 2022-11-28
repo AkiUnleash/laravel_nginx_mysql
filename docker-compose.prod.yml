@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   app:
+    platform: "linux/amd64"
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
@@ -11,6 +12,7 @@ services:
       - ./src/:/app
 
   web:
+    platform: "linux/amd64"
     build:
       context: .
       dockerfile: ./docker/web/Dockerfile
