@@ -27,5 +27,5 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker image ls -a
-      - docker push ${ECR_REPOSITORY_NAME}_app:latest
-      - docker push ${ECR_REPOSITORY_NAME}_web:latest
+      - docker push ${ECR_REPOSITORY_NAME}_app:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_app:latest
+      - docker push ${ECR_REPOSITORY_NAME}_web:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_web:latest
