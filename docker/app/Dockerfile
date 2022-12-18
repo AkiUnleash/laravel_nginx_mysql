@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-bullseye
+FROM php:8.1-fpm
 
 ARG ENV
 
@@ -34,4 +34,4 @@ RUN chmod -R 777 storage
 RUN npm install
 RUN npm run build
 
-# CMD ["bash", "/entrypoint.sh"]
+CMD ["bash", "-c", "/entrypoint.sh"]
