@@ -17,7 +17,7 @@ services:
       args:
         - ENV=prod
     ports:
-      - ${WEB_PORT}:80
+      - ${WEB_PORT:-80}:80
     volumes:
       - ./src/:/app
     depends_on:
