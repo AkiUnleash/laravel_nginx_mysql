@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION_NAME: ap-northeast-1
-    ECR_REPOSITORY_NAME: laravel_nginx_mysql
+    ECR_REPOSITORY_NAME: laravel-nginx-mysql
 
 phases:
   install:
