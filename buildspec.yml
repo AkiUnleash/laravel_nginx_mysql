@@ -15,18 +15,28 @@ phases:
       - echo Logging in to Amazon ECR....
       - aws --version
       - $(aws ecr get-login --no-include-email --region ${AWS_REGION_NAME})
+      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
+      - ECR_URL=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com
+      - REPOSITORY_URI_APP=${ECR_URL}/${ECR_REPOSITORY_NAME}_app
+      - REPOSITORY_URI_WEB=${ECR_URL}/${ECR_REPOSITORY_NAME}_web
+
   build:
     commands:
       - echo Building the Docker image...
       - docker-compose -f docker-compose.prod.yml build
-      - echo ${REPOSITORY_NAME}_app:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_app:latest
-      - docker tag ${REPOSITORY_NAME}_app:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_app:latest
-      - echo ${REPOSITORY_NAME}_web:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_web:latest
-      - docker tag ${REPOSITORY_NAME}_web:latest 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_web:latest
+      - echo ${REPOSITORY_NAME}_app:latest ${REPOSITORY_URI_APP}:latest
+      - docker tag ${REPOSITORY_NAME}_app:latest ${REPOSITORY_URI_APP}:latest
+      - echo ${REPOSITORY_NAME}_web:latest ${REPOSITORY_URI_WEB}:latest
+      - docker tag ${REPOSITORY_NAME}_web:latest ${REPOSITORY_URI_WEB}:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker image ls -a
-      - docker push 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_app:latest
-      - docker push 054974161977.dkr.ecr.${AWS_REGION_NAME}.amazonaws.com/${ECR_REPOSITORY_NAME}_web:latest
+      - docker push ${REPOSITORY_URI_APP}:latest
+      - docker push ${REPOSITORY_URI_WEB}:latest
+      - echo "[{\"name\":\"app\",\"imageUri\":\"${REPOSITORY_URI_APP}:latest\"},{\"name\":\"web\",\"imageUri\":\"${REPOSITORY_URI_WEB}:latest\"}]" > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
